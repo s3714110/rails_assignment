@@ -10,7 +10,26 @@
   </head>
 
   <body>
+
     <%= render 'layouts/home_header' %>
+    <div id="myMainbody" class="mainbody">
     <%= yield %>
+    </div>
+
+
   </body>
 </html>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+  document.getElementById("myMainnav").style.width = "0";
+  document.getElementById("myMainbody").style.width = "0";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("myMainnav").style.width = "100%";
+  document.getElementById("myMainbody").style.width = "100%";
+}
+</script>

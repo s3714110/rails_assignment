@@ -1,1 +1,11 @@
 <% provide(:title, "Home") %>
+<div>
+<p>
+  <h1>Newsletter </h1>
+  <%= form_tag({}, {action: 'index', :method => :post})  do %>
+    <h2>signup with our newsletter</h2>
+    <%= email_field_tag 'visitor_email' %>
+    <%= submit_tag 'Subscribe', class: "btn btn-lg btn-primary" %>
+  <% end %>
+</p>
+</div>
