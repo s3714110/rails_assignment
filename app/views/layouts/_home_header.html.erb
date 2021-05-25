@@ -26,6 +26,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <li><a onclick="closeNav()"><i class="fa fa-times" > </i></a></li>
+        <li><%= link_to root_path do%><i class="fa fa-home"> </i><% end %></li>
       </ul>
     </nav>
     </div>
@@ -58,8 +59,8 @@
     <div class="container-fluid sidebar-main">
       <nav>
         <ul class="nav navbar-nav navbar-left">
-          <li><i class="fa fa-info"> </i></li>
-          <li><span class="sidebar-help">Help and support</span></li>
+          <li><i class="fa fa-info"></i></li>
+          <li><span class="sidebar-help"><%= link_to "Help and support", help_path %></span></li>
         </ul>
       </nav>
     </div>
