@@ -15,6 +15,59 @@ header nav li {
     font-size: 5rem;
 }
 
+.sidebar nav li span {
+    margin-right: 5rem;
+    font-size: 3rem;
+}
+
+.sidebar nav li {
+    margin-bottom: 2rem;
+}
+
+.sidebar .cancle-icon {
+    margin-bottom: 10rem;
+}
+
+.sidebar div p {
+    margin-left: 10rem;
+    font-size: 5rem;
+    color: grey;
+}
+
+.sidebar .sidebar-main {
+    margin-bottom: 10rem;
+}
+
+.sidebar .sidebar-main li span {
+    font-size: 3rem;
+}
+
+.sidebar .sidebar-main .sidebar-help {
+    margin-left: 3rem;
+
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.25s;
+}
+
+.mainnav {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
 .center {
   text-align: center;
 }

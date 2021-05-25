@@ -1,13 +1,13 @@
-<header class="navbar ">
+<header id="myMainnav" class="navbar mainnav">
 
   <div class="container-fluid">
     <div class="center">
-      <h1>Home</h1>
+      <h1><%= yield(:title) %></h1>
     </div>
 
     <nav>
       <ul class="nav navbar-nav navbar-left">
-        <li><i class="fa fa-bars" > </i></li>
+        <li><a onclick="openNav()"><i class="fa fa-bars" > </i></a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -18,3 +18,66 @@
     </nav>
   </div>
 </header>
+
+
+  <header id="mySidenav" class="navbar sidebar">
+
+    <div class="container-fluid cancle-icon">
+    <nav>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a onclick="closeNav()"><i class="fa fa-times" > </i></a></li>
+      </ul>
+    </nav>
+    </div>
+
+    <div class="container-fluid ">
+      <nav>
+        <ul class="nav navbar-nav navbar-left">
+          <li><i class="fa fa-shopping-basket" > </i></li>
+          <li><span>shop</span></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container-fluid sidebar-main">
+      <p>Men</p>
+      <p>Women</p>
+      <p>Kids</p>
+      <p>New-ins</p>
+    </div>
+
+    <div class="container-fluid sidebar-main">
+      <nav>
+        <ul class="nav navbar-nav navbar-left">
+          <li><i class="fa fa-heart" > </i></li>
+          <li><span>Saved</span></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container-fluid sidebar-main">
+      <nav>
+        <ul class="nav navbar-nav navbar-left">
+          <li><i class="fa fa-info"> </i></li>
+          <li><span class="sidebar-help">Help and support</span></li>
+        </ul>
+      </nav>
+    </div>
+
+
+
+  </header>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+  document.getElementById("myMainnav").style.width = "0";
+
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("myMainnav").style.width = "100%";
+}
+</script>
+
