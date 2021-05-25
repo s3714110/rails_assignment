@@ -1,0 +1,27 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+    background-color: #fbfbfb;
+}
+
+header nav li {
+    margin-right: 5rem;
+    font-size: 5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+
