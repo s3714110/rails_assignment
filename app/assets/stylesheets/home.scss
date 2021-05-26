@@ -89,3 +89,42 @@ header nav li {
     background:transparent !important
 }
 
+.random-pic-div {
+    position: relative;
+    max-width: 1024px;
+    margin: auto;
+
+}
+
+.random-pic {
+    position: relative;
+    width: 100%;
+    max-height: 40vh;
+}
+
+.random-pic-name {
+    position: absolute;
+    font-size: 4rem;
+    bottom: 10rem;
+    left: 1rem;
+    color: black;
+    font-weight: bold;
+}
+
+.random-pic-price {
+    position: absolute;
+    font-size: 4rem;
+    bottom: 5rem;
+    left: 1rem;
+    color: black;
+    font-weight: bold;
+}
+
+.random-pic-addbtn {
+    position: absolute;
+    font-size: 10rem;
+    bottom: 2rem;
+    right: 1rem;
+    color: black;
+    font-weight: bold;
+}

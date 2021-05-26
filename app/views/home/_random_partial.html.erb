@@ -1,0 +1,8 @@
+  <%= image_tag(random_product.img_link, :class => "random-pic")  %>
+  <p class="random-pic-name"><%= random_product.name %></p>
+  <p class="random-pic-price"><%= number_to_currency(random_product.price) %></p>
+  <p class="random-pic-addbtn">
+    <%= link_to reset_product_home_index_path, method: :post, remote: true do %>
+    <i class="fa fa-plus-circle"> </i>
+    <% end %>
+  </p>

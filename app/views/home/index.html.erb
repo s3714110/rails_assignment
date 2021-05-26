@@ -1,4 +1,12 @@
 <% provide(:title, "Home") %>
+
+<div id="random-pic-id" class="random-pic-div ">
+
+  <%= render partial: 'random_partial', locals: {random_product: @random_product}  %>
+
+</div>
+
+
 <div>
 <p>
   <h1>Newsletter </h1>

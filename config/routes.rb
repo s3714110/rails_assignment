@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :home do
     collection do
       post 'send_email'
+      post 'reset_product'
     end
   end
 
