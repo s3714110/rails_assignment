@@ -1,4 +1,5 @@
 class CategoryProduct < ApplicationRecord
   belongs_to :product
   belongs_to :category
+  validates :product_id, uniqueness: { scope: :category_id, message: 'record already exists' }
 end

@@ -11,14 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+ <div class="field">
+    <%= form.label :product_id %>
+    <%= form.select :product_id,
+        Product.all.order(:name).collect{|p| [( p.name), p.id]}
+    %>
   </div>
 
   <div class="field">
-    <%= form.label :product_id %>
-    <%= form.number_field :product_id %>
+    <%= form.label :category_id %>
+    <%= form.select :category_id,
+        Category.all.order(:name).collect{|c| [( c.name), c.id]}
+    %>
   </div>
 
   <div class="actions">
