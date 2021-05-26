@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   resources :category_products
   resources :categories
   resources :products
+
+  resources :home do
+    collection do
+      post 'send_email'
+    end
+  end
+
   get '/home', to: 'home#index'
   post '/home', to: 'home#index'
   get '/help', to: 'home#help'
