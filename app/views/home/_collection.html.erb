@@ -1,0 +1,28 @@
+<p style="text-align:left; font-size:4rem;">
+    <b>COLLECTION</b>
+    <span style="float:right; font-size:4rem;">
+        <%= link_to "+ see all", collections_path %>
+    </span>
+</p>
+
+<div class="each-collection">
+  <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/men.png", :class => "collection-pic")  %>
+  <p class="collection-text">MEN</p>
+  <p class="collection-count"><%= categories.find(1).products.count %> products</p>
+</div>
+<div class="each-collection">
+  <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/women.jpg", :class => "collection-pic")  %>
+  <p class="collection-text">WOMEN</p>
+  <p class="collection-count"><%= categories.find(2).products.count %> products</p>
+</div>
+<div class="each-collection">
+   <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/kids.jpg", :class => "collection-pic")  %>
+   <p class="collection-text">KIDS</p>
+   <p class="collection-count"><%= categories.find(3).products.count %> products</p>
+</div>
+<div class="each-collection">
+    <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/new.jpg", :class => "collection-pic")  %>
+    <p class="collection-count"><%= categories.find(4).products.count %> products</p>
+</div>
+
+

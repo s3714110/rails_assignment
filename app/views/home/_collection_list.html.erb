@@ -1,0 +1,21 @@
+<div class="saved-slider " >
+
+  <% all_products.each do | product |  %>
+    <div class="saved-slide">
+      <div>
+        <%= image_tag(product.img_link, :class => "saved-slide-pic")  %>
+        <p class="saved-slide-addbtn">
+          <%= link_to saved_from_collection_home_index_path(:current_saved_product_name => product.name), method: :post, remote: true do %>
+            <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(product.id) %>
+              <i class="fa fa-heart"></i>
+            <% else %>
+              <i class="fa fa-plus-circle"> </i>
+            <% end %>
+          <% end %>
+        </p>
+
+      </div>
+      <p class="saved-slide-text"><%= product.name %></p>
+      <p><%= number_to_currency(product.price) %></p>
+    </div>
+  <% end %>

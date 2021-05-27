@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     if !cookies[:saved].present?
       cookies.permanent[:saved] = JSON.generate([])
     end
+    @categories = Category.all
   end
 
   def help
@@ -114,6 +115,39 @@ class HomeController < ApplicationController
       format.js
     end
 
+
+  end
+
+  def collection_all
+    if !cookies[:saved].present?
+      cookies.permanent[:saved] = JSON.generate([])
+    end
+
+    @all_products = Product.order('name')
+  end
+
+
+  def saved_from_collection
+
+    @current_saved_product = Product.find_by_name(params[:current_saved_product_name])
+    @current_saved_list = JSON.parse(cookies[:saved])
+
+    if @current_saved_list.include?(@current_saved_product.id)
+      @current_saved_list.delete(@current_saved_product.id)
+    else
+      @current_saved_list.push(@current_saved_product.id)
+      @current_saved_product.popularity += 1
+      if @current_saved_product.valid?
+        @current_saved_product.save!
+      end
+
+    end
+
+    cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    @all_products = Product.order('name')
+    respond_to do |format|
+      format.js
+    end
 
   end
 

@@ -10,6 +10,10 @@
     <%= render partial: 'popular', locals: {popular_products: @popular_products}  %>
 </div>
 
+<div id="collection-id" class="collection-div ">
+    <%= render partial: 'collection', locals: {categories: @categories} %>
+</div>
+
 <div id="send-email-id">
   <%= render partial: 'newsletter'  %>
 </div>
