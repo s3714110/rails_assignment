@@ -1,0 +1,22 @@
+<h1>Popular </h1>
+<div class="slider " >
+
+  <% popular_products.first(10).each do | product |  %>
+    <div class="slide">
+      <div>
+        <%= image_tag(product.img_link, :class => "slide-pic")  %>
+        <p class="slide-addbtn">
+          <%= link_to add_to_list_home_index_path(:current_product_name => product.name), method: :post, remote: true do %>
+            <i class="fa fa-plus-circle"> </i>
+          <% end %>
+        </p>
+
+      </div>
+      <p><%= product.name %></p>
+      <p><%= number_to_currency(product.price) %></p>
+    </div>
+  <% end %>
+
+
+
+</div>

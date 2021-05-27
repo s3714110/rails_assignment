@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       post 'send_email'
       post 'reset_product'
+      post 'add_to_list'
     end
   end
 
