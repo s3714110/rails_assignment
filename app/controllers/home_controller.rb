@@ -60,17 +60,17 @@ class HomeController < ApplicationController
     end
 
     @current_product = Product.find_by_name(params[:current_product_name])
-    @current_product.popularity += 1
-    if @current_product.valid?
-      @current_product.save!
-    end
-
     @current_saved_list = JSON.parse(cookies[:saved])
 
     if @current_saved_list.include?(@current_product.name)
       @current_saved_list.delete(@current_product.name)
     else
       @current_saved_list.push(@current_product.name)
+      @current_product.popularity += 1
+      if @current_product.valid?
+        @current_product.save!
+      end
+
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
@@ -80,6 +80,41 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
+
+  end
+
+  def saved
+    if !cookies[:saved].present?
+      cookies.permanent[:saved] = JSON.generate([])
+    end
+
+    @saved_products = JSON.parse(cookies[:saved])
+
+  end
+
+  def saved_to_list
+
+    @current_saved_product = Product.find_by_name(params[:current_saved_product_name])
+    @current_saved_list = JSON.parse(cookies[:saved])
+
+    if @current_saved_list.include?(@current_saved_product.name)
+      @current_saved_list.delete(@current_saved_product.name)
+    else
+      @current_saved_list.push(@current_saved_product.name)
+      @current_saved_product.popularity += 1
+      if @current_saved_product.valid?
+        @current_saved_product.save!
+      end
+
+    end
+
+    cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    @saved_products = JSON.parse(cookies[:saved])
+
+    respond_to do |format|
+      format.js
+    end
+
 
   end
 

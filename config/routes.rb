@@ -8,12 +8,14 @@ Rails.application.routes.draw do
       post 'send_email'
       post 'reset_product'
       post 'add_to_list'
+      post 'saved_to_list'
     end
   end
 
   get '/home', to: 'home#index'
   post '/home', to: 'home#index'
   get '/help', to: 'home#help'
+  get '/saved', to: 'home#saved'
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

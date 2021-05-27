@@ -171,3 +171,43 @@ header nav li {
     font-weight: bold;
     text-align: right;
 }
+
+.saved-slider {
+    width: 100%;
+    display: inline-block;
+}
+
+
+.saved-slide {
+    float: left;
+    width: 50%;
+    max-height: 100%;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5vh;
+    margin-bottom: 2rem;
+
+}
+
+.saved-slide-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.saved-slide-pic {
+    position: relative;
+    width: 100%;
+}
+
+.saved-slide-addbtn {
+    position: relative;
+    font-size: 3vh;
+    bottom: 1.5em;
+    right: 1rem;
+    color: black;
+    font-weight: bold;
+    text-align: right;
+}
