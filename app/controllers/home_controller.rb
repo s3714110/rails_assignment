@@ -31,17 +31,16 @@ class HomeController < ApplicationController
     end
 
     @current_random_product = Product.find_by_name(params[:random_product_name])
-    @current_random_product.popularity += 1
-    if @current_random_product.valid?
-      @current_random_product.save!
-    end
-
     @current_saved_list = JSON.parse(cookies[:saved])
 
-    if @current_saved_list.include?(@current_random_product.name)
-      @current_saved_list.delete(@current_random_product.name)
+    if @current_saved_list.include?(@current_random_product.id)
+      @current_saved_list.delete(@current_random_product.id)
     else
-      @current_saved_list.push(@current_random_product.name)
+      @current_saved_list.push(@current_random_product.id)
+      @current_random_product.popularity += 1
+      if @current_random_product.valid?
+        @current_random_product.save!
+      end
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
@@ -62,10 +61,10 @@ class HomeController < ApplicationController
     @current_product = Product.find_by_name(params[:current_product_name])
     @current_saved_list = JSON.parse(cookies[:saved])
 
-    if @current_saved_list.include?(@current_product.name)
-      @current_saved_list.delete(@current_product.name)
+    if @current_saved_list.include?(@current_product.id)
+      @current_saved_list.delete(@current_product.id)
     else
-      @current_saved_list.push(@current_product.name)
+      @current_saved_list.push(@current_product.id)
       @current_product.popularity += 1
       if @current_product.valid?
         @current_product.save!
@@ -97,10 +96,10 @@ class HomeController < ApplicationController
     @current_saved_product = Product.find_by_name(params[:current_saved_product_name])
     @current_saved_list = JSON.parse(cookies[:saved])
 
-    if @current_saved_list.include?(@current_saved_product.name)
-      @current_saved_list.delete(@current_saved_product.name)
+    if @current_saved_list.include?(@current_saved_product.id)
+      @current_saved_list.delete(@current_saved_product.id)
     else
-      @current_saved_list.push(@current_saved_product.name)
+      @current_saved_list.push(@current_saved_product.id)
       @current_saved_product.popularity += 1
       if @current_saved_product.valid?
         @current_saved_product.save!
