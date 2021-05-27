@@ -4,7 +4,7 @@
   <p class="random-pic-addbtn">
     <%= link_to reset_product_home_index_path(:random_product_name => random_product.name), method: :post, remote: true do %>
       <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(random_product.name) %>
-        <i class="fa fa-minus-circle"> </i>
+        <i class="fa fa-heart"></i>
       <% else %>
         <i class="fa fa-plus-circle"> </i>
       <% end %>

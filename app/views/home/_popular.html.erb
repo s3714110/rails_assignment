@@ -8,7 +8,7 @@
         <p class="slide-addbtn">
           <%= link_to add_to_list_home_index_path(:current_product_name => product.name), method: :post, remote: true do %>
             <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(product.name) %>
-              <i class="fa fa-minus-circle"> </i>
+              <i class="fa fa-heart"></i>
             <% else %>
               <i class="fa fa-plus-circle"> </i>
             <% end %>
