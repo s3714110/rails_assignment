@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_05_27_094630) do
     t.integer "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "saved", default: false
   end
 
 end

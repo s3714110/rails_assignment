@@ -6,5 +6,4 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :img_link, presence: true
   validates :popularity, presence: true
-  validates :saved, inclusion: { in: [ true, false ] }
 end
