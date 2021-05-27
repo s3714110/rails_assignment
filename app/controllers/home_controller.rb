@@ -10,8 +10,9 @@ class HomeController < ApplicationController
     @email_visitor = params[:visitor_email]
     unless @email_visitor.blank?
       UserNotifierMailer.send_news_email(@email_visitor).deliver
-
+      flash.now[:notice] = 'Your email has been subscribed!'
     end
+
 
     respond_to do |format|
       format.js
@@ -21,6 +22,12 @@ class HomeController < ApplicationController
 
 
   def reset_product
+    @current_random_product = Product.find_by_name(params[:random_product_name])
+    @current_random_product.popularity += 1
+    if @current_random_product.valid?
+      @current_random_product.save!
+    end
+
     @random_product = Product.find(Product.pluck(:id).sample)
 
     respond_to do |format|
