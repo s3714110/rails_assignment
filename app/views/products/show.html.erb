@@ -32,5 +32,10 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Saved?:</strong>
+  <%= @product.saved %>
+</p>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

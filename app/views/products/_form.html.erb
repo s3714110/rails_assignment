@@ -36,6 +36,11 @@
     <%= form.number_field :popularity %>
   </div>
 
+  <div class="field">
+    <%= form.label :saved %>
+    <%= form.select :saved, ['true', 'false']%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
