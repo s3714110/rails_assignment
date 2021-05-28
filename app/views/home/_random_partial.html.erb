@@ -1,6 +1,8 @@
-  <%= image_tag(random_product.img_link, :class => "random-pic")  %>
-  <p class="random-pic-name"><%= random_product.name %></p>
-  <p class="random-pic-price"><%= number_to_currency(random_product.price) %></p>
+  <%= link_to product_path(random_product.id) do %>
+    <%= image_tag(random_product.img_link, :class => "random-pic")  %>
+    <p class="random-pic-name"><%= random_product.name %></p>
+    <p class="random-pic-price"><%= number_to_currency(random_product.price) %></p>
+  <% end %>
   <p class="random-pic-addbtn">
     <%= link_to reset_product_home_index_path(:random_product_name => random_product.name), method: :post, remote: true do %>
       <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(random_product.id) %>

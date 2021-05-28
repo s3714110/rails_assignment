@@ -4,7 +4,9 @@
     <% product = Product.find(productid) %>
     <div class="saved-slide">
       <div>
-        <%= image_tag(product.img_link, :class => "saved-slide-pic")  %>
+        <%= link_to product_path(product.id) do %>
+          <%= image_tag(product.img_link, :class => "saved-slide-pic")  %>
+        <% end %>
         <p class="saved-slide-addbtn">
           <%= link_to saved_to_list_home_index_path(:current_saved_product_name => product.name), method: :post, remote: true do %>
             <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(product.id) %>
@@ -16,7 +18,9 @@
         </p>
 
       </div>
-      <p class="saved-slide-text"><%= product.name %></p>
-      <p><%= number_to_currency(product.price) %></p>
+      <%= link_to product_path(product.id) do %>
+        <p class="saved-slide-text"><%= product.name %></p>
+        <p><%= number_to_currency(product.price) %></p>
+      <% end %>
     </div>
   <% end %>
