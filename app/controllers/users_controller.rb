@@ -127,6 +127,22 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def toggle_email
+    if (!current_user.subscribed)
+      unless current_user.email.blank?
+        UserNotifierMailer.send_news_email(current_user.email).deliver
+        flash.now[:notice] = 'Your email has been subscribed!'
+        current_user.update_attribute(:subscribed, true)
+
+      end
+    else
+      current_user.update_attribute(:subscribed, false)
+    end
+
+    redirect_to user_path(current_user)
+
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

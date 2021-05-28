@@ -20,8 +20,16 @@
 </div>
 
 <div class="footer-items">
-  <%= link_to root_path do %>
-    <i class="fa fa-user"> </i>
-    <p>Account</p>
+  <% if logged_in? %>
+    <%= link_to user_path(current_user) do %>
+      <i class="fa fa-user"> </i>
+      <p>Account</p>
+    <% end %>
+
+  <% else %>
+      <%= link_to root_path do %>
+      <i class="fa fa-user"> </i>
+      <p>Account</p>
+      <% end %>
   <% end %>
 </div>

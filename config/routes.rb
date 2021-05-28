@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get '/cart', to: 'users#cart'
   post '/addcart', to: 'users#addcart'
   post '/checkout', to: 'users#checkout'
+  post '/toggle_email', to: 'users#toggle_email'
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_203325) do
+ActiveRecord::Schema.define(version: 2021_05_28_222932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_203325) do
     t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.string "cart", default: "[]"
+    t.boolean "subscribed", default: false
   end
 
 end

@@ -1,5 +1,19 @@
 <% provide(:title, @user.name) %>
-<h1>
+<h1 class="avatar">
   <%= gravatar_for @user %>
   <%= @user.name %>
 <h1>
+
+<% onoff = "" %>
+<% if current_user.subscribed %>
+<% onoff = "on" %>
+<% else %>
+<% onoff = "off" %>
+<% end %>
+
+<ul class="list-group list-group-flush profile-links">
+  <li class="list-group-item padding-link"><%= link_to cart_path do %> Pending Orders <% end %> </li>
+  <li class="list-group-item padding-link"><%= link_to edit_user_path(current_user) do %>Update login details <% end %></li>
+  <li class="list-group-item padding-link"><%= link_to toggle_email_path, method: :post do %>Toggle subscription (currently <%=onoff%> ) <% end %>  </li>
+
+</ul>
