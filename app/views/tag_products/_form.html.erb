@@ -1,0 +1,32 @@
+<%= form_with(model: tag_product, local: true) do |form| %>
+  <% if tag_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag_product.errors.count, "error") %> prohibited this tag_product from being saved:</h2>
+
+      <ul>
+      <% tag_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.select :product_id,
+        Product.all.order(:name).collect{|p| [( p.name), p.id]}
+    %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_id %>
+    <%= form.select :tag_id,
+        Tag.all.order(:name).collect{|t| [( t.name), t.id]}
+    %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,8 @@
 <% provide(:title, "Saved List") %>
 
 <div id="saved-list-id">
-    <%= render partial: 'saved_list', locals: {saved_products: @saved_products}  %>
+    <% if !@saved_products.nil? %>
+      <%= render partial: 'saved_list', locals: {saved_products: @saved_products}  %>
+    <% end %>
 </div>
+

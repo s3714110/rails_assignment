@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :tag_products
+  resources :tags
+  resources :size_products
+  resources :sizes
+  resources :color_products
+  resources :colors
   resources :subimgs
   resources :category_products
 

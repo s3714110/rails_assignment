@@ -1,5 +1,9 @@
 <% provide(:title, @category.name) %>
 
+
 <div id="category-list-id">
-    <%= render partial: 'list_product', locals: {category: @category}  %>
+    <% if !@category.nil? %>
+      <%= render partial: 'list_product', locals: {category: @category}  %>
+    <% end %>
 </div>
+
