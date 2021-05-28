@@ -16,6 +16,10 @@
     <%= yield %>
     </div>
 
+    <div id="myFooterbody" class="footer">
+    <%= render 'layouts/home_footer' %>
+    </div>
+
 
   </body>
 </html>
@@ -25,11 +29,13 @@ function openNav() {
   document.getElementById("mySidenav").style.width = "100%";
   document.getElementById("myMainnav").style.width = "0";
   document.getElementById("myMainbody").style.width = "0";
+  document.getElementById("myFooterbody").style.width = "0";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("myMainnav").style.width = "100%";
   document.getElementById("myMainbody").style.width = "100%";
+  document.getElementById("myFooterbody").style.width = "100%";
 }
 </script>

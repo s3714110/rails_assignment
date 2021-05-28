@@ -8,6 +8,7 @@
 
 body {
     background-color: #fbfbfb;
+    padding-bottom: 15vh;
 }
 
 header nav li {
@@ -281,4 +282,33 @@ header nav li {
     font-size: 2rem;
     background-color: lightgreen;
     color: green;
+}
+
+.footer {
+    position: fixed;
+    border-style: solid;
+    border-color: lightgrey;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #fbfbfb;
+    text-align: center;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+.footer-items {
+    postion: relative;
+    float: left;
+    width: 25%;
+    max-height: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 5vh;
+
+}
+
+.footer-items p {
+    font-size: 2vh;
 }
