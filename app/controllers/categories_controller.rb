@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  layout 'home'
   before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json
@@ -53,6 +54,28 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def saved_from_category
+    @current_saved_product = Product.find_by_name(params[:current_saved_product_name])
+    @current_saved_list = JSON.parse(cookies[:saved])
+
+    if @current_saved_list.include?(@current_saved_product.id)
+      @current_saved_list.delete(@current_saved_product.id)
+    else
+      @current_saved_list.push(@current_saved_product.id)
+      @current_saved_product.popularity += 1
+      if @current_saved_product.valid?
+        @current_saved_product.save!
+      end
+
+    end
+
+    cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    @category_temp = Category.find(params[:category_temp])
+    respond_to do |format|
+      format.js
     end
   end
 

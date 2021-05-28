@@ -1,26 +1,5 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @category.name) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-<h3> Products </h3 >
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Popularity</th>
-  </tr>
-  <% @category.products.order(:name).each do | product | %>
-    <tr>
-      <td> <%= product.name%> </td>
-      <td> <%= product.price%> </td>
-      <td> <%= product.description%> </td>
-      <td> <%= product.popularity%> </td>
-    </tr>
-  <% end %>
-</table>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div id="category-list-id">
+    <%= render partial: 'list_product', locals: {category: @category}  %>
+</div>

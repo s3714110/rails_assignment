@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :category_products
-  resources :categories
+
+  resources :categories do
+    collection do
+      post 'saved_from_category'
+    end
+  end
+
   resources :products
 
   resources :home do

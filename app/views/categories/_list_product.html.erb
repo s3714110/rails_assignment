@@ -1,11 +1,11 @@
 <div class="saved-slider " >
 
-  <% all_products.each do | product |  %>
+  <% category.products.order(:name).each do | product |  %>
     <div class="saved-slide">
       <div>
         <%= image_tag(product.img_link, :class => "saved-slide-pic")  %>
         <p class="saved-slide-addbtn">
-          <%= link_to saved_from_collection_home_index_path(:current_saved_product_name => product.name), method: :post, remote: true do %>
+          <%= link_to saved_from_category_categories_path(:current_saved_product_name => product.name, :category_temp => category), method: :post, remote: true do %>
             <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(product.id) %>
               <i class="fa fa-heart"></i>
             <% else %>
@@ -21,3 +21,6 @@
   <% end %>
 
 </div>
+
+<%= link_to 'Edit', edit_category_path(category) %> |
+<%= link_to 'Back', categories_path %>
