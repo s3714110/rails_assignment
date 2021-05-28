@@ -39,10 +39,12 @@
   <tbody>
 
       <tr>
-        <%= form_tag do %>
+        <%= form_tag url_for(cart_path), :method => 'post' do %>
+        <%= hidden_field_tag 'product_id', product.id %>
         <td><%= select_tag 'size', options_from_collection_for_select( Size.find(sizes.map(&:size_id)) , 'id', 'name' ) , class: "product-opt-select" %></td>
-        <td><%= select_tag 'colors',options_from_collection_for_select(Color.find(colors.map(&:color_id)) , 'id', 'name'), class: "product-opt-select" %></td>
+        <td><%= select_tag 'color',options_from_collection_for_select( Color.find(colors.map(&:color_id)) , 'id', 'name'), class: "product-opt-select" %></td>
         <td><%= number_field_tag 'qty', 1, min: 1, step: 1, class: "product-opt-select" %></td>
+        <%= submit_tag 'Add to cart', class: "btn btn-lg btn-primary" %>
         <% end %>
       </tr>
 

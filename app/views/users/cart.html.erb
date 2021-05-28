@@ -1,0 +1,9 @@
+<% provide(:title, "Cart") %>
+
+
+<% @cart.each do |cart_item| %>
+<p>Product id is <%= cart_item[0] %> </p>
+<p>Size id is <%= cart_item[1] %> </p>
+<p>Color id is <%= cart_item[2] %> </p>
+<p>Qty id is <%= cart_item[3] %> </p>
+<% end %>
