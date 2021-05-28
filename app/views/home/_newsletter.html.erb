@@ -2,12 +2,14 @@
   <h1><b>NEWSLETTER</b> </h1>
   <%= form_tag url_for(send_email_home_index_path), :method => 'post', remote: true  do %>
     <h2>signup with our newsletter</h2>
-    <%= email_field_tag 'visitor_email', nil, required: true, placeholder: 'Enter your email here..' %>
+    <div>
+    <%= email_field_tag 'visitor_email', nil, required: true, placeholder: 'Enter your email here..', class: "newsletter-field-div" %>
+    </div>
     <%= submit_tag 'Subscribe', class: "btn btn-lg btn-primary" %>
   <% end %>
 
   <% flash.each do |type, msg| %>
-  <div class="alert alert-info center">
+  <div class="alert alert-info center newsletter-field-flash">
     <h1> <%= msg %> </h1>
   </div>
 <% end %>
