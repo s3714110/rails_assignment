@@ -1,11 +1,10 @@
 <header id="myMainnav" class="navbar mainnav">
-  <% if logged_in? %>
-    <li>
-      <%= link_to "Log out", logout_path, method: :delete %>
-    </li>
-  <% else %>
-    <li><%= link_to "Log in", login_path %></li>
-  <% end %>
+
+    <% flash.each do |type, msg| %>
+      <div class="center newsletter-field-flash">
+        <h1> <%= msg %> </h1>
+      </div>
+    <% end %>
 
   <div class="container-fluid">
     <div class="center">
@@ -15,6 +14,14 @@
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <li><a onclick="openNav()"><i class="fa fa-bars" > </i></a></li>
+        <% if logged_in? %>
+          <li>
+            Hi <%= current_user.name %>!
+            <%= link_to "Log out", logout_path, method: :delete %>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
