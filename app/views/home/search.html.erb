@@ -2,7 +2,7 @@
 
 <div class="search-div">
 <%= form_tag url_for(search_path), :method => 'post'  do %>
-          <%= search_field_tag :search_param, params[:search_param], id: 'search_param', placeholder: "Start searching...", :class => 'search-bar', onkeyup: "$(this).parent('form').submit();" %>
+          <%= search_field_tag :search_param, params[:search_param], id: 'search_param', placeholder: "Start searching...", :class => 'search-bar', onblur: "$(this).parent('form').submit();" %>
           <%= button_tag " Search", :class => 'btn btn-primary search-btn', :name => nil%>
 <% end %>
 </div>

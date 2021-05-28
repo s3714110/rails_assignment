@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :colors
   resources :subimgs
   resources :category_products
+  resources :users
 
   resources :categories do
     collection do
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
   get '/collections', to: 'home#collection_all'
   get '/search', to: 'home#search'
   post '/search', to: 'home#search'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
