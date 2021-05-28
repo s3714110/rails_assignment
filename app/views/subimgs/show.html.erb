@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @subimg.product.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @subimg.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_subimg_path(@subimg) %> |
+<%= link_to 'Back', subimgs_path %>

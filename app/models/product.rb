@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_many :category_products
   has_many :categories, through: :category_products
+  has_many :subimgs
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true
   validates :description, presence: true

@@ -1,0 +1,11 @@
+<div class="search-result-div " >
+
+  <% all_products.each do | product |  %>
+    <div class="search-result">
+      <%= link_to product_path(product.id) do %>
+        <p><%= product.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

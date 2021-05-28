@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subimgs
   resources :category_products
 
   resources :categories do
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   get '/help', to: 'home#help'
   get '/saved', to: 'home#saved'
   get '/collections', to: 'home#collection_all'
+  get '/search', to: 'home#search'
+  post '/search', to: 'home#search'
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

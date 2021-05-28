@@ -151,4 +151,12 @@ class HomeController < ApplicationController
 
   end
 
+  def search
+    if !params[:search_param].nil?
+      @parameter = params[:search_param].downcase
+      @all_products = Product.all.where('lower(name) LIKE ?', "%#{@parameter}%" ).order('name')
+    end
+  end
+
+
 end
