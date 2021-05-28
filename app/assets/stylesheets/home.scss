@@ -408,3 +408,38 @@ header nav li {
     color: black;
     font-weight: bold;
 }
+
+.cart-div {
+    position: relative;
+    background-color: lightgrey;
+    width: 100%;
+    height: 40vh;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.cart-img {
+
+    float: left;
+    text-align: center;
+    width: 40vw;
+    max-height: 80%;
+}
+
+.cart-product-name {
+    font-size: 3rem;
+
+}
+.cart-description {
+    bottom: 20%;
+    font-size: 2rem;
+}
+
+.total-price {
+    float: right;
+}
+
+.checkout-btn {
+    height: 5rem;
+    font-size: 3rem;
+}

@@ -38,9 +38,6 @@ class UsersController < ApplicationController
   end
 
   def addcart
-    if !cookies[:cart].present?
-      cookies.permanent[:cart] = JSON.generate([])
-    end
 
     if !logged_in?
       cookies.delete :cart_temp
@@ -51,6 +48,7 @@ class UsersController < ApplicationController
       temp_array.push(params[:qty])
       cookies.permanent[:cart_temp] = JSON.generate(temp_array)
       redirect_to login_url
+
     else
       if cookies[:cart_temp].present?
         temp_cart = JSON.parse(cookies[:cart_temp])
@@ -59,10 +57,16 @@ class UsersController < ApplicationController
         @color_id = temp_cart[2]
         @qty = temp_cart[3]
 
-        cart = JSON.parse(cookies[:cart])
-        cart.push(temp_cart)
-        cookies.permanent[:cart] = JSON.generate(cart)
+        user_temp = current_user
+        user_cart = Cart.new(unit: temp_cart, user_id: current_user.id)
+        user_cart.save!
+
+        product_temp = Product.find(@product_id)
+        product_temp.popularity += 1
+        product_temp.save!
+
         cookies.delete :cart_temp
+        redirect_to cart_path
 
       else
 
@@ -77,20 +81,21 @@ class UsersController < ApplicationController
         temp_item.push(@color_id)
         temp_item.push(@qty)
 
-        cart = JSON.parse(cookies[:cart])
-        cart.push(temp_item)
-        @cart = cart
-        cookies.permanent[:cart] = JSON.generate(cart)
+        user_temp = current_user
+        user_cart = Cart.new(unit: temp_item, user_id: current_user.id)
+        user_cart.save!
+
+        product_temp = Product.find(@product_id)
+        product_temp.popularity += 1
+        product_temp.save!
+
+        user_cart.save!
         redirect_to cart_path
       end
     end
   end
 
   def cart
-    if !cookies[:cart].present?
-      cookies.permanent[:cart] = JSON.generate([])
-    end
-
     if !logged_in?
       redirect_to login_url
     else
@@ -101,19 +106,26 @@ class UsersController < ApplicationController
           @color_id = temp_cart[2]
           @qty = temp_cart[3]
 
-          cart = JSON.parse(cookies[:cart])
-          cart.push(temp_cart)
-          cookies.permanent[:cart] = JSON.generate(cart)
+          user_temp = current_user
+          user_cart = Cart.new(unit: temp_cart, user_id: current_user.id)
+          user_cart.save!
+
+          product_temp = Product.find(@product_id)
+          product_temp.popularity += 1
+          product_temp.save!
+
           cookies.delete :cart_temp
         end
 
-        cart = JSON.parse(cookies[:cart])
-        @cart = cart;
     end
 
 
   end
 
+  def checkout
+    Cart.where(:user_id => current_user.id).delete_all
+    redirect_to root_path
+  end
 
   private
     def user_params

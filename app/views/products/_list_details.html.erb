@@ -1,4 +1,4 @@
-  <div class="product-slider" >
+<div class="product-slider" >
       <div class="product-slide">
         <%= image_tag(product.img_link, :class => "product-slide-pic")  %>
       </div>
@@ -19,7 +19,7 @@
       <% end %>
     </p>
 
-  </div>
+</div>
 
 <h1 class="product-h"><b><%= product.name %></b></h1>
 <h1 class="product-h"><%= number_to_currency(product.price) %></h1>
@@ -27,6 +27,7 @@
 
 <div class="product-opt-div">
 
+<%= form_tag addcart_path, :method => 'post' do %>
 <table>
   <thead>
     <tr>
@@ -39,18 +40,19 @@
   <tbody>
 
       <tr>
-        <%= form_tag url_for(cart_path), :method => 'post' do %>
-        <%= hidden_field_tag 'product_id', product.id %>
-        <td><%= select_tag 'size', options_from_collection_for_select( Size.find(sizes.map(&:size_id)) , 'id', 'name' ) , class: "product-opt-select" %></td>
-        <td><%= select_tag 'color',options_from_collection_for_select( Color.find(colors.map(&:color_id)) , 'id', 'name'), class: "product-opt-select" %></td>
-        <td><%= number_field_tag 'qty', 1, min: 1, step: 1, class: "product-opt-select" %></td>
-        <%= submit_tag 'Add to cart', class: "btn btn-lg btn-primary" %>
-        <% end %>
+
+
+          <td><%= select_tag 'size', options_from_collection_for_select( Size.find(sizes.map(&:size_id)) , 'id', 'name' ) , class: "product-opt-select" %></td>
+          <td><%= select_tag 'color',options_from_collection_for_select( Color.find(colors.map(&:color_id)) , 'id', 'name'), class: "product-opt-select" %></td>
+          <td><%= number_field_tag 'qty', 1, min: 1, step: 1, class: "product-opt-select" %></td>
+          <td><%= hidden_field_tag 'product_id', product.id %></td>
+          <td><%= submit_tag 'Add to cart', class: "btn btn-lg btn-primary" %></td>
+
       </tr>
 
   </tbody>
 </table>
-
+<% end %>
 </div>
 
 <%= link_to 'Edit', edit_product_path(product) %> |

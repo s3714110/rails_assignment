@@ -1,9 +1,37 @@
 <% provide(:title, "Cart") %>
 
+<% cart_total_price = 0.0 %>
 
-<% @cart.each do |cart_item| %>
-<p>Product id is <%= cart_item[0] %> </p>
-<p>Size id is <%= cart_item[1] %> </p>
-<p>Color id is <%= cart_item[2] %> </p>
-<p>Qty id is <%= cart_item[3] %> </p>
+<% Cart.where(user_id: current_user.id).all.each do |cart|  %>
+<% product_id = JSON.parse(cart.unit).at(0) %>
+<%  size_id = JSON.parse(cart.unit).at(1) %>
+<% color_id = JSON.parse(cart.unit).at(2) %>
+<% qty = JSON.parse(cart.unit).at(3) %>
+
+<div class="cart-div">
+    <% product = Product.find(product_id) %>
+    <%= link_to product_path(product.id) do %>
+        <%= image_tag(product.img_link, :class => "cart-img")  %>
+        <h1 class="cart-product-name"> <b><%= product.name %> </b></h2>
+        <h2> <%= number_to_currency(product.price) %> <h2>
+    <% end %>
+    <p class="cart-description" >
+    Size: <%= Size.find(size_id).name %>, Color:
+    <%= Color.find(color_id).name %>, Quantity:
+    <%= qty %>
+    </p>
+    <% cart_total_price += (product.price.to_f * qty.to_f) %>
+    </p>
+</div>
+
 <% end %>
+
+<h1 class=" ">Total price: <%= number_to_currency(cart_total_price) %></h1>
+<%= link_to checkout_path, method: :post do %>
+<button type="button" class="btn btn-primary btn-lg btn-block checkout-btn ">Check out</button>
+<% end %>
+
+
+
+
+
