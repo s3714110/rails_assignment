@@ -1,6 +1,6 @@
 <% provide(:title, @product.name) %>
 
-<div id="category-list-id">
+<div id="product-list-id">
     <% if !@product.nil? %>
       <%= render partial: 'list_details', locals: {product: @product, sub_imgs: @sub_imgs, colors: @colors, sizes: @sizes, tags: @tags}  %>
     <% end %>

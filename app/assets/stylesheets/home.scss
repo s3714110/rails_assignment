@@ -379,3 +379,32 @@ header nav li {
 .product-h {
     font-size: 5rem;
 }
+
+.product-opt-div {
+    width: 100%;
+    font-size: 2rem;
+    position: relative;
+
+}
+
+.product-opt-div th{
+    position: relative;
+    width: 33vw;
+    height: 5vh;
+    text-align: center;
+}
+
+.product-opt-select {
+    width: 100%;
+    max-height: 3vh;
+    font-size: 2rem;
+}
+
+.product-savedbtn {
+    position: absolute;
+    font-size: 10rem;
+    bottom: 20%;
+    right: 1rem;
+    color: black;
+    font-weight: bold;
+}

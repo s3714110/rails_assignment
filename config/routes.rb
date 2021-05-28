@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products
+  resources :products do
+    collection do
+      post 'saved_from_product'
+    end
+  end
 
   resources :home do
     collection do

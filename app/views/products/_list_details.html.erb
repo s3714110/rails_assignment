@@ -8,14 +8,48 @@
           <%= image_tag(sub_img.url, :class => "product-slide-pic")  %>
         </div>
       <% end %>
+
+    <p class="product-savedbtn">
+      <%= link_to saved_from_product_products_path(:current_saved_product_name => product.name, :product_temp => product), method: :post, remote: true do %>
+        <% if cookies[:saved].present? && JSON.parse(cookies[:saved]).include?(product.id) %>
+          <i class="fa fa-heart"></i>
+        <% else %>
+          <i class="fa fa-plus-circle"> </i>
+        <% end %>
+      <% end %>
+    </p>
+
   </div>
 
 <h1 class="product-h"><b><%= product.name %></b></h1>
 <h1 class="product-h"><%= number_to_currency(product.price) %></h1>
 <p class="product-description"><%= product.description %></p>
 
+<div class="product-opt-div">
 
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Qty</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
 
+      <tr>
+        <%= form_tag do %>
+        <td><%= select_tag 'size', options_from_collection_for_select( Size.find(sizes.map(&:size_id)) , 'id', 'name' ) , class: "product-opt-select" %></td>
+        <td><%= select_tag 'colors',options_from_collection_for_select(Color.find(colors.map(&:color_id)) , 'id', 'name'), class: "product-opt-select" %></td>
+        <td><%= number_field_tag 'qty', 1, min: 1, step: 1, class: "product-opt-select" %></td>
+        <% end %>
+      </tr>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+  </tbody>
+</table>
+
+</div>
+
+<%= link_to 'Edit', edit_product_path(product) %> |
 <%= link_to 'Back', products_path %>

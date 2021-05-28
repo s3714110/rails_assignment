@@ -1,0 +1,1 @@
+$("#product-list-id").html("<%= escape_javascript( render partial: 'list_details', locals: {product: @product_temp, sub_imgs: @sub_imgs, colors: @colors, sizes: @sizes, tags: @tags} ) %>");

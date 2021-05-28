@@ -61,6 +61,37 @@ class ProductsController < ApplicationController
     end
   end
 
+  def saved_from_product
+    @current_saved_product = Product.find_by_name(params[:current_saved_product_name])
+    @current_saved_list = JSON.parse(cookies[:saved])
+
+    if @current_saved_list.include?(@current_saved_product.id)
+      @current_saved_list.delete(@current_saved_product.id)
+    else
+      @current_saved_list.push(@current_saved_product.id)
+      @current_saved_product.popularity += 1
+      if @current_saved_product.valid?
+        @current_saved_product.save!
+      end
+
+    end
+
+    cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+
+    @product_temp = Product.find(params[:product_temp])
+    @sub_imgs = Subimg.where(["product_id = ?", @product_temp.id]).all
+    @colors = ColorProduct.where(["product_id = ?",  @product_temp.id]).all
+    @sizes = SizeProduct.where(["product_id = ?",  @product_temp.id]).all
+    @tags = TagProduct.where(["product_id = ?",  @product_temp.id]).all
+
+
+    respond_to do |format|
+      format.js
+    end
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
