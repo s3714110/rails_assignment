@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  protect_from_forgery with: :exception
+  include SessionsHelper
+
   def index
     @random_product = Product.find(Product.pluck(:id).sample)
     @popular_products = Product.order('popularity DESC, name')

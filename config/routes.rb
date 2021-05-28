@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   resources :tag_products
   resources :tags
   resources :size_products
@@ -36,6 +37,9 @@ Rails.application.routes.draw do
   post '/search', to: 'home#search'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
