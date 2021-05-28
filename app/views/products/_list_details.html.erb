@@ -1,0 +1,21 @@
+  <div class="product-slider" >
+      <div class="product-slide">
+        <%= image_tag(product.img_link, :class => "product-slide-pic")  %>
+      </div>
+
+      <% sub_imgs.order(:url).each do | sub_img | %>
+        <div class="product-slide">
+          <%= image_tag(sub_img.url, :class => "product-slide-pic")  %>
+        </div>
+      <% end %>
+  </div>
+
+<h1 class="product-h"><b><%= product.name %></b></h1>
+<h1 class="product-h"><%= number_to_currency(product.price) %></h1>
+<p class="product-description"><%= product.description %></p>
+
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

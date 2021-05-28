@@ -142,6 +142,7 @@ header nav li {
     margin-bottom: 3vh;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 
 }
 
@@ -155,7 +156,7 @@ header nav li {
     margin: 0 2rem 0;
 }
 
-.slides > div {
+.slide > div {
 
      scroll-snap-align: start;
 }
@@ -341,4 +342,40 @@ header nav li {
 .search-result {
     font-size: 3vh;
     padding: 2vh;
+}
+
+.product-slider {
+
+  width: 100%;
+
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.product-slide {
+
+  width: 100%;
+  height: 60vh;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  padding: 2rem;
+  text-align: center
+
+}
+
+.product-slide-pic {
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+}
+
+.product-description {
+    font-size: 3rem;
+}
+
+.product-h {
+    font-size: 5rem;
 }

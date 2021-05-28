@@ -1,37 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @product.name) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Img link:</strong>
-  <%= @product.img_link %>
-</p>
-
-<p>
-  <strong>Popularity:</strong>
-  <%= @product.popularity %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <% @product.categories.each do | category | %>
-  <%= category.name%> &nbsp;
-  <% end %>
-</p>
+<div id="category-list-id">
+    <% if !@product.nil? %>
+      <%= render partial: 'list_details', locals: {product: @product, sub_imgs: @sub_imgs, colors: @colors, sizes: @sizes, tags: @tags}  %>
+    <% end %>
+</div>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

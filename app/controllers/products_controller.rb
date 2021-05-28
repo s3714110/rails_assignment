@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  layout 'home'
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -8,6 +9,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @sub_imgs = Subimg.where(["product_id = ?", params[:id]]).all
+    @colors = ColorProduct.where(["product_id = ?", params[:id]]).all
+    @sizes = SizeProduct.where(["product_id = ?", params[:id]]).all
+    @tags = TagProduct.where(["product_id = ?", params[:id]]).all
   end
 
   # GET /products/new
