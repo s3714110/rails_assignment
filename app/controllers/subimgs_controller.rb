@@ -1,5 +1,7 @@
 class SubimgsController < ApplicationController
+  layout 'home'
   before_action :set_subimg, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /subimgs or /subimgs.json
   def index
@@ -65,5 +67,9 @@ class SubimgsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def subimg_params
       params.require(:subimg).permit(:url, :product_id)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end

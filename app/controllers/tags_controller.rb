@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
+  layout 'home'
   before_action :set_tag, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /tags or /tags.json
   def index
@@ -65,5 +67,9 @@ class TagsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tag_params
       params.require(:tag).permit(:name)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end

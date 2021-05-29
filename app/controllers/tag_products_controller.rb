@@ -1,5 +1,7 @@
 class TagProductsController < ApplicationController
+  layout 'home'
   before_action :set_tag_product, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /tag_products or /tag_products.json
   def index
@@ -65,5 +67,9 @@ class TagProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tag_product_params
       params.require(:tag_product).permit(:tag_id, :product_id)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end

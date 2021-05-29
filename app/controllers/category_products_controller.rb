@@ -1,5 +1,7 @@
 class CategoryProductsController < ApplicationController
+  layout 'home'
   before_action :set_category_product, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /category_products or /category_products.json
   def index
@@ -65,5 +67,9 @@ class CategoryProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_product_params
       params.require(:category_product).permit(:category_id, :product_id)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end
