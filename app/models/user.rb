@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_many :carts
+  has_one :savelist
   validates :name, presence: true, length: { maximum: 25}
   validates :email, presence: true, length: { maximum: 100 }, uniqueness: { case_sensitive:false },
         format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
