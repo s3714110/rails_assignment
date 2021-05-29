@@ -17,6 +17,7 @@ http://s3714110-rad2021.herokuapp.com/
 https://github.com/s3714110/rails_assignment
 
 last Heroku deployment log
+
 Counting objects: 78, done.
 Compressing objects: 100% (76/76), done.
 Writing objects: 100% (78/78), 9.85 KiB | 672.00 KiB/s, done.
