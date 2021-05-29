@@ -159,5 +159,14 @@ class HomeController < ApplicationController
     end
   end
 
+  def filter
+
+    @products = Product.all
+    @tag_products = TagProduct.all.where(:tag_id => params[:tag])
+
+    @products = Product.all.where(:product_id =>  @tag_products.map(&:product_id) )
+
+  end
+
 
 end

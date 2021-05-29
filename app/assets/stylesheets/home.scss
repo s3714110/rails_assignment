@@ -461,3 +461,82 @@ header nav li {
     padding: 1em;
     text-align: center;
 }
+
+.filter-opt-div {
+    width: 100%;
+    font-size: 3rem;
+    position: relative;
+    text-allign: center;
+}
+
+.filter-opt-div th {
+     width: 40%;
+}
+
+.filter-opt-div td {
+     width: 30%;
+}
+.form-check-input {
+    font-size: 5vh;
+}
+.form-p {
+    width: 30%;
+}
+
+.logged-li {
+    font-size: 2rem;
+}
+
+.checkbox {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 5rem;
+    span {
+        margin-left: 20px;
+        font-weight: normal;
+    }
+}
+
+#session_remember_me {
+    width: auto;
+    margin-left: 0;
+
+}
+
+input, textarea, select, .uneditable-input {
+    border: 1px solid #7FB8EA;
+    width: 100%;
+    margin-bottom: 2vh;
+
+    @include box_sizing(border_box);
+}
+
+
+input {
+    height: auto !important;
+
+}
+
+#error_explanation {
+    color: crimson;
+    ul {
+        color: crimson;
+        margin: 0 0 20px 0;
+    }
+}
+
+.field_with_errors {
+    @extend .has-error;
+    .form-control {
+        color: $state-danger-text;
+    }
+}
+
+.row {
+    font-size: 5rem;
+}
+.form-control {
+    font-size: 5rem;
+}
+
+
