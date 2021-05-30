@@ -74,6 +74,9 @@ class CategoriesController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
     @category_temp = Category.find(params[:category_temp])
     respond_to do |format|
       format.js

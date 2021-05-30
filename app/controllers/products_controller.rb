@@ -78,6 +78,9 @@ class ProductsController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
 
     @product_temp = Product.find(params[:product_temp])
     @sub_imgs = Subimg.where(["product_id = ?", @product_temp.id]).all
