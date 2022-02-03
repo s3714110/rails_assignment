@@ -7,30 +7,28 @@
 
 <div class="each-collection">
   <%= link_to category_path(1) do %>
-  <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/men.png", :class => "collection-pic")  %>
+  <%= image_tag("https://i.ibb.co/d6cKM5N/men.png", :class => "collection-pic")  %>
   <p class="collection-text">MEN</p>
   <p class="collection-count"><%= categories.find(1).products.count %> products</p>
   <% end %>
 </div>
 <div class="each-collection">
   <%= link_to category_path(2) do %>
-  <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/women.jpg", :class => "collection-pic")  %>
+  <%= image_tag("https://i.ibb.co/YTr0QMG/women.jpg", :class => "collection-pic")  %>
   <p class="collection-text">WOMEN</p>
   <p class="collection-count"><%= categories.find(2).products.count %> products</p>
   <% end %>
 </div>
 <div class="each-collection">
    <%= link_to category_path(3) do %>
-   <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/kids.jpg", :class => "collection-pic")  %>
+   <%= image_tag("https://i.ibb.co/Fh1rdLB/kids.webp", :class => "collection-pic")  %>
    <p class="collection-text">KIDS</p>
    <p class="collection-count"><%= categories.find(3).products.count %> products</p>
    <% end %>
 </div>
 <div class="each-collection">
     <%= link_to category_path(4) do %>
-    <%= image_tag("https://rad2021.s3.us-east-2.amazonaws.com/collection/new.jpg", :class => "collection-pic")  %>
+    <%= image_tag("https://i.ibb.co/MZPx7f0/new.jpg", :class => "collection-pic")  %>
     <p class="collection-count"><%= categories.find(4).products.count %> products</p>
     <% end %>
 </div>
-
-
