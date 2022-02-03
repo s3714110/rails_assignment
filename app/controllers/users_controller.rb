@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      Savelist.new(list: JSON.generate([]), user_id: current_user.id).save!
       log_in @user
       flash[:success] = "Welcome "  + @user.name + " !"
       redirect_to root_path

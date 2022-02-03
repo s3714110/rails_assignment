@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   layout 'home'
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:index, :edit, :update, :destroy, :new, :create]
 
   # GET /categories or /categories.json
   def index
@@ -73,6 +74,9 @@ class CategoriesController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
     @category_temp = Category.find(params[:category_temp])
     respond_to do |format|
       format.js
@@ -89,4 +93,16 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
+
+    def logged_in
+      unless logged_in?
+        store_location
+        redirect_to root_url
+      end
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
+    end
+
 end

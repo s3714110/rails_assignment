@@ -1,6 +1,14 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+
+    if(Savelist.find_by(user_id: user.id).nil?)
+      Savelist.new(list: JSON.generate([]), user_id: user.id).save!
+    end
+
+    cookies.permanent[:saved] = Savelist.find_by(user_id: user.id).list
+
+
   end
 
   def current_user
@@ -23,6 +31,7 @@ module SessionsHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+    cookies.permanent[:saved] = JSON.generate([])
   end
 
   def remember(user)

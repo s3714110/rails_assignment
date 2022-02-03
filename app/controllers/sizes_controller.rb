@@ -1,5 +1,7 @@
 class SizesController < ApplicationController
+  layout 'home'
   before_action :set_size, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /sizes or /sizes.json
   def index
@@ -65,5 +67,9 @@ class SizesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def size_params
       params.require(:size).permit(:name)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end

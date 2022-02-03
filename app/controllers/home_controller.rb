@@ -47,6 +47,10 @@ class HomeController < ApplicationController
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
 
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
+
     @random_product = Product.find(Product.pluck(:id).sample)
 
     respond_to do |format|
@@ -75,6 +79,9 @@ class HomeController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
 
     @popular_products = Product.order('popularity DESC, name')
 
@@ -110,6 +117,9 @@ class HomeController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
     @saved_products = JSON.parse(cookies[:saved])
 
     respond_to do |format|
@@ -145,6 +155,9 @@ class HomeController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
     @all_products = Product.order('name')
     respond_to do |format|
       format.js

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   layout 'home'
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:index, :edit, :update, :destroy, :new, :create]
 
   # GET /products or /products.json
   def index
@@ -77,6 +78,9 @@ class ProductsController < ApplicationController
     end
 
     cookies.permanent[:saved] = JSON.generate(@current_saved_list)
+    if logged_in?
+     Savelist.find_by(user_id: current_user.id).update_attribute(:list, JSON.generate(@current_saved_list))
+    end
 
     @product_temp = Product.find(params[:product_temp])
     @sub_imgs = Subimg.where(["product_id = ?", @product_temp.id]).all
@@ -101,5 +105,9 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :price, :description, :img_link, :popularity)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end

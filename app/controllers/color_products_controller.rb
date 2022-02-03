@@ -1,5 +1,7 @@
 class ColorProductsController < ApplicationController
+  layout 'home'
   before_action :set_color_product, only: %i[ show edit update destroy ]
+  before_action :admin_user, only: [:show, :index, :edit, :update, :destroy, :new, :create]
 
   # GET /color_products or /color_products.json
   def index
@@ -65,5 +67,9 @@ class ColorProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def color_product_params
       params.require(:color_product).permit(:color_id, :product_id)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless ( logged_in? && current_user.admin?)
     end
 end
