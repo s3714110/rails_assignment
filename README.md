@@ -6,7 +6,6 @@ http://s3714110-rad2021.herokuapp.com/
 
 Note: There are some current issues due to lack of fundings:
 - Images are currently missing due to database being deleted from expired AWS account (will be fixed in the future)
-- Email subscription service is not availble also due to SendGrid account being temporarily suspended (will be fixed in the future)
 
 ## Features / Functionality:
 
