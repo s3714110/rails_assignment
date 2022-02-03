@@ -1,5 +1,5 @@
 class UserNotifierMailer < ApplicationMailer
-  default :from => 's3714110@student.rmit.edu.au'
+  default :from => 'lamtran1030@gmail.com'
 
   def send_news_email(email)
     mail( :to => email,
